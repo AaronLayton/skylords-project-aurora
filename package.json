@@ -1,0 +1,33 @@
+{
+  "name": "skylords-project-aurora",
+  "version": "1.0.0",
+  "description": "Skylords Project Aurora",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:p": "webpack --mode=production",
+    "build:w": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AaronLayton/skylords-project-aurora.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Aaron Layton",
+    "email": "aaron.r.layton@gmail.com",
+    "url": "https://www.validatethis.co.uk"
+  },
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/AaronLayton/skylords-project-aurora/issues"
+  },
+  "homepage": "https://github.com/AaronLayton/skylords-project-aurora#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.6"
+  }
+}
