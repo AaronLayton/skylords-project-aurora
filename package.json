@@ -24,10 +24,11 @@
     "url": "https://github.com/AaronLayton/skylords-project-aurora/issues"
   },
   "homepage": "https://github.com/AaronLayton/skylords-project-aurora#readme",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "ejs": "^2.6.2",
-    "express": "^4.17.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.6"
   }
