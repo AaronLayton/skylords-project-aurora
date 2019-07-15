@@ -1,5 +1,69 @@
-<div style="max-width: 500px; margin: 0 auto;">
-    <h1>Project Aurora</h1>
-    <p>Thanks for dropping by but there is nothing to see here, yet.</p>
-    <p>Your probably looking for <a href="https://www.skylords.com">Skylords.com</a>.</p>
-</div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/monokai.min.css">
+
+    <title>Project Aurora</title>
+    <style>
+        .position-right { right: 0; left: auto; }
+        .code-block { background: #272822; }
+    </style>
+  </head>
+  <body>
+    
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Project Aurora</h1>
+            <p class="lead">A modernisation project for the community over at <a href="https://www.skylords.com" target="_blank" rel="noopener noreferrer">Skylords.com</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>What is this project</h2>
+        <p>Project Aurora is an open source plugin for the game <a href="https://www.skylords.com" target="_blank" rel="noopener noreferrer">Skylords.com</a>. It is hosted on free <a href="https://www.heroku.com/" target="_blank" rel="noopener noreferrer">Heroku</a> servers and is managed through its <a href="https://github.com/AaronLayton/skylords-project-aurora" class="fixed-top position-right" target="_blank" rel="noopener noreferrer">Github page</a>.</p>
+        <p>The projects aim is to add UI improvements to the game and features ontop of the current game.</p>
+
+        <h2>Installation</h2>
+        <p>To install this extension onto Skylords we are currently recommending users install <a href="https://chrome.google.com/webstore/detail/css-and-javascript-inject/ckddknfdmcemedlmmebildepcmneakaa" target="_blank" rel="noopener noreferrer">CSS and JavaScript Injection</a>.</p>
+        <p>This plugin allows an end user to inject their own code onto their favourite sites.</p>
+        <p>Once installed, click the new icon in chrome and then paste the below into the JavaScript tab whilst you are on the Skylords website.</p>
+    </div>
+    <div class="code-block">
+        <pre class="container">
+            <code class="javascript">(function(a,u,r,o,ra){ra=u.createElement(r),m=u.getElementsByTagName(r)[0];
+ra.async=1;ra.src=o;m.parentNode.insertBefore(ra,m)
+})(window,document,'script','https://skylords-project-aurora.herokuapp.com/js/aurora.dist.js');</code>
+        </pre>
+    </div>
+
+    <div class="container">
+        <h2>Suggest a feature</h2>
+        <p>If you have a feature suggestion, be it a new UI element, a new tool to help plan attacks or just fixing something that is currently broke then feel free to create an Issue over on the project page. I welcome all new suggestions and will review each one, if it is something small and simple then turn around time will usually be within the day.</p>
+        <div class="my-4">
+            <a href="https://github.com/AaronLayton/skylords-project-aurora/issues/new" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Suggest new feature</a> <a href="https://github.com/AaronLayton/skylords-project-aurora/issues" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary">See current Issues</a>
+        </div>
+
+        <h2>Contributing</h2>
+        <p>This is an open source project and as such the community is the driving force to its success. I welcome anyone who like to contribute to this project, that can include planning, Issue management and even code contributions.</p>
+        <p>If you would like to contribute you can fork the project over on Github and create any changes you like. Once you are complete, create a Pull Request where it will be reviewed and merged into the main code base. Again, any help is greatly appreciated.</p>
+    </div>
+
+    <a href="https://github.com/AaronLayton/skylords-project-aurora" class="fixed-top position-right">
+        <img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1">
+    </a>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
