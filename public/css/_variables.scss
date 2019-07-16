@@ -1,0 +1,19 @@
+
+// Default transition speed for all transitions
+$transition-speed: 200ms;
+
+// transition: standard
+// Moving things that are already on screen
+$transition-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+
+// transition: ease-out
+// Use for things entering the screen
+$transition-enter: cubic-bezier(0.0, 0.0, 0.2, 1);
+
+// transition: ease-in
+// Use for things exiting the screen
+$transition-exit: cubic-bezier(0.4, 0.0, 1, 1);
+
+// transition: sharp
+// Use for objects moving off screen but that can return at any time. i.e. a confirmation box?
+$transition-panel-exit: cubic-bezier(0.4, 0.0, 0.6, 1);

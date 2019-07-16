@@ -1,0 +1,49 @@
+@import "../../css/_variables.scss";
+
+//
+// Panel Updater
+//
+
+.panel-updater {
+    position: relative;
+    &::before {
+        background: #fefefe;
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 12;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility $transition-speed $transition-exit, 
+            opacity $transition-speed $transition-exit;
+    }
+
+    &::after {
+        background: url(loading.svg) no-repeat;
+        content: '';
+        display: block;
+        height: 24px;
+        width: 24px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -12px 0 0 -12px;
+        z-index: 13;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+
+    &.is-loading {
+        &::before, 
+        &::after {
+            transition-timing-function: $transition-enter;
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+}

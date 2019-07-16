@@ -1,0 +1,110 @@
+
+.info-popup {
+  background: #fff;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  box-shadow: 
+    0 1px 1px 0 rgba(60,64,67,.08), 
+    0 1px 3px 1px rgba(60,64,67,.16);
+  color: #333;
+  
+  font-family: tahoma;
+  font-size: 12px;
+  margin-left: 10px;
+  position: absolute;
+  transition: 
+    box-shadow 135ms cubic-bezier(.4,0,.2,1),
+    width 235ms cubic-bezier(.4,0,.2,1);
+  
+  vertical-align: top;
+  width: 240px;
+  z-index: 1;
+
+  top: 100px;
+  right: 100px;
+  
+  &:hover {
+    box-shadow: 0 1px 3px 1px rgba(60,64,67,.2), 0 2px 8px 4px rgba(60,64,67,.1);
+  }
+  
+  &::after, 
+  &::before {
+    right: 100%;
+    top: 30px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  &::after {
+    border-color: rgba(255, 255, 255, 0);
+    border-right-color: #fff;
+    border-width: 10px;
+    margin-top: -10px;
+  }
+  &::before {
+    border-color: rgba(170, 170, 170, 0);
+    border-right-color: #aaa;
+    border-width: 11px;
+    margin-top: -11px;
+  }
+}
+
+.info-popup__header {
+  
+}
+.info-popup__player-name {
+  color: #000;
+  font-size: 1.5rem;
+}
+.info-popup__clan-name {
+  color: #aaa;
+  font-size: .9rem;
+  
+  a {
+    color: #888;
+    text-decoration: none;
+    
+    &:hover {
+      color: #bf5676;
+    }
+  }
+}
+
+.player-info {
+  
+}
+.player-info span { 
+  color: #000;
+  font-weight: bold;
+  width: 80px;
+  float: right;
+}
+
+.info-popup__footer {
+  border-top: 1px solid #ddd;
+  display: flex;
+  
+  a {
+    color: #212121;
+    flex: 1;
+    font-size: .7rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    min-width: 64px;
+    padding: 12px 16px;
+    display: inline-block;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: #eee;
+    }
+  }
+}
+.p-3 { padding: 1rem; }
+.px-3 { padding-left: 1rem; padding-right: 1rem; }
+.pb-3 { padding-bottom: 1rem; }
