@@ -1,6 +1,7 @@
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var path = require('path');
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
   mode: 'development',
@@ -8,13 +9,10 @@ module.exports = {
       'aurora': './public/js/aurora.js'
   },
   output: {
-    filename: 'js/[name].dist.js',
     path: path.resolve(__dirname, 'public'),
-    publicPath: '/',
-    library: 'Vybe',
-    libraryTarget: 'window',
-    libraryExport: 'default'
-
+    filename: 'js/[name].dist.js',
+    chunkFilename: 'js/async/[name].chunk.js',
+    publicPath: isProduction ? 'https://skylords-project-aurora.herokuapp.com/' : 'http://localhost:5000/'
   },
   module: {
     rules: [
@@ -81,12 +79,12 @@ module.exports = {
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: "css/[name].css",
-      chunkFilename: "async/[name].[id].css"
-    }),
+    // new MiniCssExtractPlugin({
+    //   // Options similar to the same options in webpackOptions.output
+    //   // both options are optional
+    //   filename: "css/[name].dist.css",
+    //   chunkFilename: "css/async/[name].[id].css"
+    // }),
     new OptimizeCssAssetsPlugin()
   ]
 };
