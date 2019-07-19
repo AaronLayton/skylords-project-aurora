@@ -66,8 +66,8 @@ async function getProfileData(doc) {
         name: playerUsername,
         displayName: playerLink.innerText,
         clanName: doc.querySelector("#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(2) > a").innerText,
-        points: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(${7 + selectorOffset})`).innerText,
-        totalPoints: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(${8 + selectorOffset})`).innerText,
+        points: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(7)`).innerText,
+        totalPoints: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(8)`).innerText,
         timesDefeated: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(${25 + selectorOffset})`).innerText,
         playersDefeated: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(${26 + selectorOffset})`).innerText,
     };
