@@ -1,21 +1,36 @@
 import {html, render} from 'lit-html';
+import { addClass, removeClass, waitForFrame } from '../../modules/utility-functions';
+import * as CTH from '../../modules/css-transition-helper';
 import panelUpdater from '../../modules/panel-updater.js';
 import styles from './style.scss';
+
+const CONTAINER_X_OFFSET = 10;
+const CONTAINER_Y_OFFSET = -23;
 
 let playerCardTemplate;
 
 export default () => {
+    let mouseoutTimeout;
     const container = document.createElement('div');
-    container.classList.add('tmp-container');
+    container.classList.add('info-container');
     document.body.appendChild(container);
+    
+    container.addEventListener('mouseover', () => {
+        clearTimeout(mouseoutTimeout);
+    });
+    container.addEventListener('mouseout', () => {
+        mouseoutTimeout = hideContainer(container);
+    });
 
     const allPlayerLinks = document.querySelectorAll('[href^="/player"]');
-
     allPlayerLinks.forEach(elm => {
         elm.addEventListener('mouseover', e => {
             const URL = e.target.getAttribute('href');
             const tmep = getTemplateInstance();
+            resetContainer(container);
+            clearTimeout(mouseoutTimeout);
 
+            positionContainer(container, e.target);
             render(tmep({
                 name: "DAngel",
                 displayName: "Aaron the Great",
@@ -23,15 +38,28 @@ export default () => {
                 points: "1,000,000",
                 totalPoints: "1,000,000",
                 timesDefeated: "0",
-                playersDefeated: "0"
+                playersDefeated: "0",
             }), container);
+
+            CTH.activate(container);
             console.log("mouse over");
         });
 
         elm.addEventListener('mouseout', e => {
-            console.log("mouse out");
+            mouseoutTimeout = hideContainer(container);
         });
     });
+}
+
+function resetContainer(container){
+    removeClass(container, "is-visible");
+    removeClass(container, "is-active");
+}
+
+function hideContainer(container) {
+    return setTimeout(() => {
+        CTH.deactivate(container);
+    }, 1000);
 }
 
 function getTemplateInstance() {
@@ -76,4 +104,11 @@ function getTemplateInstance() {
     `;
 
     return playerCardTemplate;
+}
+
+function positionContainer(container, target) {
+    const style = window.getComputedStyle(target);
+    const domrect = target.getBoundingClientRect();
+    container.style.top = `${domrect.y + window.pageYOffset + CONTAINER_Y_OFFSET}px`;
+    container.style.left = `${domrect.x + domrect.width + CONTAINER_X_OFFSET}px`;
 }

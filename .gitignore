@@ -1,2 +1,5 @@
 node_modules
 aurora.dist.js
+
+public/js/async
+public/css/async

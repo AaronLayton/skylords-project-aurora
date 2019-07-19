@@ -1,4 +1,32 @@
+@import "../../../css/variables";
 
+.info-container {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+
+  display: none;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-10%);
+
+  transition:
+    opacity $transition-speed $transition-exit,
+    visibility $transition-speed $transition-exit,
+    transform $transition-speed $transition-exit;
+
+  &.is-visible {
+    display: block;
+  }
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    transition-timing-function: $transition-enter;
+  }
+}
 .info-popup {
   background: #fff;
   border: 1px solid #aaa;
@@ -11,17 +39,15 @@
   font-family: tahoma;
   font-size: 12px;
   margin-left: 10px;
-  position: absolute;
   transition: 
     box-shadow 135ms cubic-bezier(.4,0,.2,1),
     width 235ms cubic-bezier(.4,0,.2,1);
   
   vertical-align: top;
   width: 240px;
-  z-index: 1;
 
-  top: 100px;
-  right: 100px;
+  position: relative;
+  z-index: 1;
   
   &:hover {
     box-shadow: 0 1px 3px 1px rgba(60,64,67,.2), 0 2px 8px 4px rgba(60,64,67,.1);
