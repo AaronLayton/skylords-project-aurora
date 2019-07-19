@@ -24,25 +24,20 @@ export default () => {
 
     const allPlayerLinks = document.querySelectorAll('[href^="/player"]');
     allPlayerLinks.forEach(elm => {
-        elm.addEventListener('mouseover', e => {
-            const URL = e.target.getAttribute('href');
+        elm.addEventListener('mouseover', async (e) => {
+            const URL = e.currentTarget.getAttribute('href');
             const tmep = getTemplateInstance();
+            const panel = container.querySelector('.panel-updater') || document.createElement("div");
+
             resetContainer(container);
             clearTimeout(mouseoutTimeout);
 
-            positionContainer(container, e.target);
-            render(tmep({
-                name: "DAngel",
-                displayName: "Aaron the Great",
-                clanName: "ChaosInDaGalaxy",
-                points: "1,000,000",
-                totalPoints: "1,000,000",
-                timesDefeated: "0",
-                playersDefeated: "0",
-            }), container);
-
+            positionContainer(container, e.currentTarget);
             CTH.activate(container);
-            console.log("mouse over");
+
+            const data = await panelUpdater(panel, getPlayerData(URL));
+
+            render(tmep(data), container);
         });
 
         elm.addEventListener('mouseout', e => {
@@ -50,6 +45,34 @@ export default () => {
         });
     });
 }
+
+async function getPlayerData(url) {
+    return fetch(url)
+        .then(response => response.text())
+        .then(text => {
+            const parser = new DOMParser();
+            const htmlDocument = parser.parseFromString(text, "text/html");
+            return htmlDocument;
+        })
+        .then(getProfileData);
+}
+
+async function getProfileData(doc) {
+    const playerLink = doc.querySelector('#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(1) > a');
+    const playerUsername = playerLink.getAttribute("href").replace("/com/spm/","");
+
+    const selectorOffset = doc.querySelector('#centercontent > div.base-body > table > tbody > tr > td:nth-child(1) > p:nth-child(5)') ? 1 : 0;
+    return {
+        name: playerUsername,
+        displayName: playerLink.innerText,
+        clanName: doc.querySelector("#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(2) > a").innerText,
+        points: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(${7 + selectorOffset})`).innerText,
+        totalPoints: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(${8 + selectorOffset})`).innerText,
+        timesDefeated: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(${25 + selectorOffset})`).innerText,
+        playersDefeated: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(${26 + selectorOffset})`).innerText,
+    };
+}
+
 
 function resetContainer(container){
     removeClass(container, "is-visible");
