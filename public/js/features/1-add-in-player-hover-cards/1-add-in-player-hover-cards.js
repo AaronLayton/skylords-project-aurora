@@ -33,10 +33,9 @@ export default () => {
             clearTimeout(mouseoutTimeout);
 
             positionContainer(container, e.currentTarget);
-            CTH.activate(container);
 
             const data = await panelUpdater(panel, getPlayerData(URL));
-
+            CTH.activate(container);
             render(tmep(data), container);
         });
 
@@ -57,19 +56,35 @@ async function getPlayerData(url) {
         .then(getProfileData);
 }
 
-async function getProfileData(doc) {
+async function getProfileData(doc = document) {
+    let selectorOffset = 0;
+
     const playerLink = doc.querySelector('#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(1) > a');
     const playerUsername = playerLink.getAttribute("href").replace("/com/spm/","");
 
-    const selectorOffset = doc.querySelector('#centercontent > div.base-body > table > tbody > tr > td:nth-child(1) > p:nth-child(5)') ? 1 : 0;
+    const hasClan = doc.querySelector('#centercontent > div.base-body > table > tbody > tr > td:nth-child(1) > *:nth-child(2)').innerText == "Clan:";
+    if (hasClan) selectorOffset++;
+
+    //console.log("hasClan", hasClan);
+
+    const hasLocation = doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(1) > *:nth-child(${3 + selectorOffset})`).innerText == "Location:";
+    if (hasLocation) selectorOffset++;
+
+    //console.log("hasLocation", hasLocation);
+    
+    const hasGender = doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(1) > *:nth-child(${3 + selectorOffset})`).innerText == "Gender:";
+    if (hasGender) selectorOffset++;
+    //console.log("hasGender", hasGender);
+    
     return {
         name: playerUsername,
         displayName: playerLink.innerText,
-        clanName: doc.querySelector("#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(2) > a").innerText,
-        points: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(7)`).innerText,
-        totalPoints: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(8)`).innerText,
-        timesDefeated: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(${25 + selectorOffset})`).innerText,
-        playersDefeated: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(${26 + selectorOffset})`).innerText,
+        classImg: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p > img`).getAttribute('src'),
+        clanName: hasClan ? doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(2)`).innerText : null,
+        points: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(${5 + selectorOffset})`).innerText,
+        totalPoints: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(${6 + selectorOffset})`).innerText,
+        timesDefeated: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(${23 + selectorOffset})`).innerText,
+        playersDefeated: doc.querySelector(`#centercontent > div.base-body > table > tbody > tr > td:nth-child(2) > p:nth-child(${24 + selectorOffset})`).innerText,
     };
 }
 
@@ -92,6 +107,7 @@ function getTemplateInstance() {
         name,
         displayName,
         clanName,
+        classImg,
         points,
         totalPoints,
         timesDefeated,
@@ -102,7 +118,7 @@ function getTemplateInstance() {
                 <div class="info-popup__header p-3">
                     <div class="info-popup__player-name">${displayName}</div>
                     <div class="info-popup__clan-name"><a href="/clan/${clanName}">${clanName}</a></div>
-                    <img src="https://www.skylords.com/styles/2/class5.png" />
+                    <img src="${classImg}" />
                 </div>
                 <div class="info-popup__body px-3 pb-3">
                     <div class="player-info">
