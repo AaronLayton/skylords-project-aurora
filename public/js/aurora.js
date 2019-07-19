@@ -7,7 +7,6 @@ function debug(msg) {
 function runAllFeatures(allFeatures) {
     allFeatures.forEach(entry => {
         console.log(`Running feature: ${entry.name}`);
-        console.log(entry.image);
         entry.setup();
     });
 }
