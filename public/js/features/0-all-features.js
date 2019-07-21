@@ -1,8 +1,8 @@
+import { getOption } from '../modules/local-storage-settings';
+
 import f1_image from './1-add-in-player-hover-cards/screenshot.jpg';
 import f2_image from './2-keyboard-shortcut-to-submit-messages/screenshot.jpg';
 import f3_image from './3-fix-cursor-on-space-page/screenshot.jpg';
-
-
 
 export default [
     {
@@ -12,7 +12,9 @@ export default [
         setup: async () => {
             const feature = await import('./1-add-in-player-hover-cards/1-add-in-player-hover-cards');
             feature.default();
-        }
+        },
+        key: 'player-cards',
+        active: getOption("player-cards")
     },
     {
         name: "CTRL+Enter to submit",
@@ -21,7 +23,9 @@ export default [
         setup: async () => {
             const feature = await import('./2-keyboard-shortcut-to-submit-messages/2-keyboard-shortcut-to-submit-messages');
             feature.default();
-        }
+        },
+        key: 'enter-to-submit',
+        active: getOption("enter-to-submit")
     },
     {
         name: "Fix cursor on space page",
@@ -30,6 +34,8 @@ export default [
         setup: async () => {
             const feature = await import('./3-fix-cursor-on-space-page/3-fix-cursor-on-space-page');
             feature.default();
-        }
+        },
+        key: 'fix-space-cursor',
+        active: getOption("fix-space-cursor")
     }
 ];

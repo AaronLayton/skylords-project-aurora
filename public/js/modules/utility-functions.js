@@ -37,3 +37,4 @@ export const findElementPosition = elm => {
 
 export const queryStringFromObject = params => Object.keys(params).map(key => `${key}=${params[key]}`).join('&');
 export const waitForFrame = () => new Promise((resolve) => requestAnimationFrame(resolve));
+export const isLoggedIn = document.querySelector('#menucontent [href="/login"]') === null;
