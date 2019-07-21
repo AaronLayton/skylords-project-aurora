@@ -1,0 +1,27 @@
+.aurora-markdown {
+
+    h1, h2, h3, h4, h5, h6, p {
+        display: block;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    a {
+        color: #4888da;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.aurora-markdown__footer {
+    color: #aaa;
+    border-top: 1px solid #aaa;
+}
