@@ -3,35 +3,34 @@
     border-top: none;
     padding: 1rem;
     display: flex;
-
-    &:first-of-type {
-        border-top: 1px solid #000;
-    }
+}
+.aurora-feature:first-of-type {
+    border-top: 1px solid #000;
 }
 
 .aurora-feature__image {
     padding-right: 1rem;
     width: 150px;
-
-    img {
-        max-width: 100%;
-        width: 100%;
-        height: auto;
-    }
 }
+.aurora-feature__image img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
 .aurora-feature__info {
     flex: 1;
-
-    h2 {
-        display: block;
-        margin-bottom: .4rem;
-    }
 }
+.aurora-feature__info h2 {
+    display: block;
+    margin-bottom: .4rem;
+}
+
 .aurora-feature__actions {
     text-align: right;
     width: 100px;
+}
 
-    input {
-        width: 50px;
-    }
+.aurora-feature__actions input {
+    width: 50px;
 }

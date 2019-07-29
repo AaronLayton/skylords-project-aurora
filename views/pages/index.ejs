@@ -18,6 +18,7 @@
             margin-bottom: 1rem;
         }
     </style>
+    <link href="css/pages/settings.css" rel="stylesheet" />
   </head>
   <body>
     
@@ -57,6 +58,16 @@
         <p>If you have a feature suggestion, be it a new UI element, a new tool to help plan attacks or just fixing something that is currently broke then feel free to create an Issue over on the project page. I welcome all new suggestions and will review each one, if it is something small and simple then turn around time will usually be within the day.</p>
         <div class="my-4">
             <a href="https://github.com/AaronLayton/skylords-project-aurora/issues/new" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Suggest new feature</a> <a href="https://github.com/AaronLayton/skylords-project-aurora/issues" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary">See current Issues</a>
+        </div>
+
+        <h2>Current features</h2>
+        <p>The feature list is growing and you can help shape this plugin with the above links. Feedback is welcome</p>
+        <div id="featureList">
+            <% if (featureList) { %>
+                <% featureList.forEach(function(feature){ %>
+                    <%- include('../templates/feature.ejs', feature); %>
+                <% }); %>
+            <% } %>
         </div>
 
         <h2>Contributing</h2>
