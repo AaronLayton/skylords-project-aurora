@@ -12,20 +12,22 @@ export default () => {
     document.querySelectorAll('.mt-text')
         .forEach(entry => {
             let newHtml = '';
-            const userSignature = document.querySelector('.usign');
+            const userSignature = entry.querySelector('.usign');
             if (userSignature) {
                 userSignature.remove();
             }
             
             const originalText = entry.innerText;
             const markdownHtml = md.render(originalText);
+            
 
             newHtml += `${markdownHtml}`;
 
             if (userSignature) {
                 const originalText = userSignature.innerText;
-                const newText = originalText.replace("__________________________","");
-                newHtml += `<div class="aurora-markdown__footer">${md.render(newText)}</div>`;
+                const newText = originalText.replace("__________________________","").replace(/\n/g, "  \n");
+                const signatureMarkdownHtml = md.render(newText);
+                newHtml += `<div class="aurora-markdown__footer">${signatureMarkdownHtml}</div>`;
             }
             
             
