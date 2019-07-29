@@ -1,7 +1,7 @@
 import {html, render} from 'lit-html';
 import allFeatures from '../features/0-all-features';
 import { setOption } from '../modules/local-storage-settings';
-import settingsCSS from '../../css/pages/settings.scss';
+import settingsCSS from '../../css/pages/settings.css';
 
 
 const featureTemplate = ({name, description, image, key, active = true}) => html`
