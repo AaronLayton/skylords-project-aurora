@@ -4,6 +4,7 @@ import f1_image from './1-add-in-player-hover-cards/screenshot.jpg';
 import f2_image from './2-keyboard-shortcut-to-submit-messages/screenshot.jpg';
 import f3_image from './3-fix-cursor-on-space-page/screenshot.jpg';
 import f4_image from './4-markdown-posts/screenshot.jpg';
+import f5_image from './5-keyboard-controlled-ships/screenshot.jpg';
 
 export default [
     {
@@ -29,8 +30,8 @@ export default [
         active: getOption("enter-to-submit")
     },
     {
-        name: "Fix cursor on space page",
-        description: "Adds back in the hand cursor when hovering over movable cells on the space page",
+        name: "[Deprecated] Fix cursor on space page",
+        description: "Adds back in the hand cursor when hovering over movable cells on the space page. Note: this works without turning this option on.",
         image: f3_image,
         setup: async () => {
             const feature = await import('./3-fix-cursor-on-space-page/3-fix-cursor-on-space-page');
@@ -49,5 +50,16 @@ export default [
         },
         key: 'markdown-posts',
         active: getOption("markdown-posts")
+    },
+    {
+        name: "Keyboard controlled ships",
+        description: "This feature allows you to control your ships with the keyboard. You can move your ships with the arrow keys (diagonal is supported) for basic movement or you can hold shift + up / down to traverse the Z axis.",
+        image: f5_image,
+        setup: async () => {
+            const feature = await import('./5-keyboard-controlled-ships/5-keyboard-controlled-ships');
+            feature.default();
+        },
+        key: '5-keyboard-controlled-ships',
+        active: getOption("5-keyboard-controlled-ships")
     }
 ];
