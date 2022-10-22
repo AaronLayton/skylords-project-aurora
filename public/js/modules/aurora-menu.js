@@ -1,5 +1,3 @@
-import { totalmem } from "os";
-
 const MAIN_CONTENT_SELECTOR = '#centercontent, #maincontent';
 const allLinks = [];
 let backedUpContent;
