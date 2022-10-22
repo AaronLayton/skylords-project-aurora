@@ -26,6 +26,11 @@ express()
       name: "Markdown posts",
       description: "The forum posts are so 90's, not supporting anything except smileys. This takes the post content and runs it through a Markdown converter so that posts can now be styled, include links, have images, list etc ...",
       image: "/img/screenshot-8bfd87b3.dist.jpg",
-    }]
+    },
+    {
+      name: "Keyboard controlled ships",
+      description: "This feature allows you to control your ships with the keyboard. You can move your ships with the arrow keys (diagonal is supported) for basic movement or you can hold shift + up / down to traverse the Z axis.",
+      image: "/img/screenshot-89ec325f.dist.jpg",
+  }]
   }))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
