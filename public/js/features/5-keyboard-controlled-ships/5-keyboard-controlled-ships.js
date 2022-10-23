@@ -1,37 +1,37 @@
 const detectKeyCombination = (keysPressed) => {
   // Detect the key press combination
-  if (keysPressed["Shift"] && keysPressed["ArrowUp"]) {
+  if ((keysPressed["Shift"] && keysPressed["ArrowUp"]) || (keysPressed["Shift"] && keysPressed["w"])) {
     return "Shift + Up";
   }
 
-  if (keysPressed["Shift"] && keysPressed["ArrowDown"]) {
+  if ((keysPressed["Shift"] && keysPressed["ArrowDown"]) || (keysPressed["Shift"] && keysPressed["s"])) {
     return "Shift + Down";
   }
 
-  if (keysPressed["ArrowUp"] && keysPressed["ArrowRight"]) {
+  if ((keysPressed["ArrowUp"] && keysPressed["ArrowRight"]) || keysPressed["w"] && keysPressed["d"]) {
     return "Up + Right";
   }
-  if (keysPressed["ArrowUp"] && keysPressed["ArrowLeft"]) {
+  if ((keysPressed["ArrowUp"] && keysPressed["ArrowLeft"]) || keysPressed["w"] && keysPressed["a"]) {
     return "Up + Left";
   }
-  if (keysPressed["ArrowDown"] && keysPressed["ArrowRight"]) {
+  if ((keysPressed["ArrowDown"] && keysPressed["ArrowRight"]) || keysPressed["s"] && keysPressed["d"]) {
     return "Down + Right";
   }
-  if (keysPressed["ArrowDown"] && keysPressed["ArrowLeft"]) {
+  if ((keysPressed["ArrowDown"] && keysPressed["ArrowLeft"]) || keysPressed["s"] && keysPressed["a"]) {
     return "Down + Left";
   }
 
   // Detect the arrow keys
-  if (keysPressed["ArrowUp"]) {
+  if (keysPressed["ArrowUp"] || keysPressed["w"]) {
     return "Up";
   }
-  if (keysPressed["ArrowDown"]) {
+  if (keysPressed["ArrowDown"] || keysPressed["s"]) {
     return "Down";
   }
-  if (keysPressed["ArrowLeft"]) {
+  if (keysPressed["ArrowLeft"] || keysPressed["a"]) {
     return "Left";
   }
-  if (keysPressed["ArrowRight"]) {
+  if (keysPressed["ArrowRight"] || keysPressed["d"]) {
     return "Right";
   }
 };
