@@ -1,10 +1,10 @@
 const detectKeyCombination = (keysPressed) => {
   // Detect the key press combination
-  if ((keysPressed["Shift"] && keysPressed["ArrowUp"]) || (keysPressed["Shift"] && keysPressed["w"])) {
+  if ((keysPressed["Shift"] && keysPressed["ArrowUp"]) || (keysPressed["Shift"] && keysPressed["W"])) {
     return "Shift + Up";
   }
 
-  if ((keysPressed["Shift"] && keysPressed["ArrowDown"]) || (keysPressed["Shift"] && keysPressed["s"])) {
+  if ((keysPressed["Shift"] && keysPressed["ArrowDown"]) || (keysPressed["Shift"] && keysPressed["S"])) {
     return "Shift + Down";
   }
 
